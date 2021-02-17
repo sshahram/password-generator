@@ -45,6 +45,14 @@ var generatePassword = function() {
         var randomElement = specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
         passwordGenerated = passwordGenerated + randomElement;
       }
+
+      var okNumeric = window.confirm("Click OK to confirm including numeric values.")
+
+      if(okNumeric) {
+        var randomElement2 = numbers[Math.floor(Math.random() * numbers.length)];
+        passwordGenerated = passwordGenerated + randomElement2
+        console.log(passwordGenerated)
+      }
   
     }
 
