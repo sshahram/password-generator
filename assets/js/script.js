@@ -24,7 +24,7 @@ var generatePassword = function() {
     var passwordGenerated = ""
 
     // Ask users about the length of password
-    var numCharacters = window.prompt("How many characters would you like your password to contain?");
+    var numCharacters = parseInt(window.prompt("How many characters would you like your password to contain?"));
 
     // Check the length of requested password is at least 8 characters
     if (numCharacters < 8) {
@@ -44,28 +44,40 @@ var generatePassword = function() {
       var okNumeric = window.confirm("Click OK to confirm including numeric values.");
       var okUpperCase = window.confirm("Click OK to confirm including upprcase characters.");
       var okLowerCase = window.confirm("Click OK to confirm including lowercase characters.");
+      var combinedArray = [];
+
+      debugger;
 
       if (okSpecial) {
         var randomElement = specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
         passwordGenerated = passwordGenerated + randomElement;
-      }
+        combinedArray = combinedArray + specialCharacters;
+      };
 
-      if(okNumeric) {
+      if (okNumeric) {
         var randomElement2 = numbers[Math.floor(Math.random() * numbers.length)];
-        passwordGenerated = passwordGenerated + randomElement2
-      }
+        passwordGenerated = passwordGenerated + randomElement2;
+        combinedArray = combinedArray + numbers;
+      };
 
-      if(okUpperCase) {
+      if (okUpperCase) {
         var randomElement3 = upperCase[Math.floor(Math.random() * upperCase.length)];
-        passwordGenerated = passwordGenerated + randomElement3
-      }
+        passwordGenerated = passwordGenerated + randomElement3;
+        combinedArray = combinedArray + upperCase;
+      };
       
-      if(okLowerCase) {
+      if (okLowerCase) {
         var randomElement4 = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-        passwordGenerated = passwordGenerated + randomElement4
+        passwordGenerated = passwordGenerated + randomElement4;
+        combinedArray = combinedArray + lowerCase;
+      };
 
-        console.log(passwordGenerated);
+      var passwordLength = numCharacters - passwordGenerated.length;
+      for (var i = 0; i < passwordLength; i++) {
+        passwordGenerated = passwordGenerated + combinedArray[Math.floor(Math.random() * combinedArray.length)];
       }
+      return passwordGenerated;
+  
   
     }
 
