@@ -37,49 +37,48 @@ var generatePassword = function() {
       window.alert("Your password must be no more than 128 characters");
       generatePassword();
     }
-  
+
     // When requested password is between 8 to 128 characters
     else {
       var okSpecial = window.confirm("Click OK to confirm including special characters.");
       var okNumeric = window.confirm("Click OK to confirm including numeric values.");
       var okUpperCase = window.confirm("Click OK to confirm including upprcase characters.");
       var okLowerCase = window.confirm("Click OK to confirm including lowercase characters.");
+      
       var combinedArray = [];
 
-      debugger;
 
       if (okSpecial) {
         var randomElement = specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
         passwordGenerated = passwordGenerated + randomElement;
-        combinedArray = combinedArray + specialCharacters;
-      };
+        combinedArray = combinedArray.concat(specialCharacters);
+      }
 
       if (okNumeric) {
         var randomElement2 = numbers[Math.floor(Math.random() * numbers.length)];
         passwordGenerated = passwordGenerated + randomElement2;
-        combinedArray = combinedArray + numbers;
-      };
+        combinedArray = combinedArray.concat(numbers);
+      }
 
       if (okUpperCase) {
         var randomElement3 = upperCase[Math.floor(Math.random() * upperCase.length)];
         passwordGenerated = passwordGenerated + randomElement3;
-        combinedArray = combinedArray + upperCase;
-      };
+        combinedArray = combinedArray.concat(upperCase);
+      }
       
       if (okLowerCase) {
         var randomElement4 = lowerCase[Math.floor(Math.random() * lowerCase.length)];
         passwordGenerated = passwordGenerated + randomElement4;
-        combinedArray = combinedArray + lowerCase;
-      };
+        combinedArray = combinedArray.concat(lowerCase);
+      }
 
       var passwordLength = numCharacters - passwordGenerated.length;
       for (var i = 0; i < passwordLength; i++) {
         passwordGenerated = passwordGenerated + combinedArray[Math.floor(Math.random() * combinedArray.length)];
       }
       return passwordGenerated;
-  
-  
     }
+  
 
 };
 
