@@ -39,7 +39,7 @@ var generatePassword = function() {
     }
 
     // When requested password is between 8 to 128 characters
-    else {
+    else if (numCharacters >= 8 && numCharacters <=128) {
       var okSpecial = window.confirm("Click OK to confirm including special characters.");
       var okNumeric = window.confirm("Click OK to confirm including numeric values.");
       var okUpperCase = window.confirm("Click OK to confirm including upprcase characters.");
@@ -72,11 +72,23 @@ var generatePassword = function() {
         combinedArray = combinedArray.concat(lowerCase);
       }
 
+      if (!okSpecial && !okNumeric && !okLowerCase && !okUpperCase) {
+        alert("At least one of the criteria should be selected. Please try again!");
+        return;
+      }
+
       var passwordLength = numCharacters - passwordGenerated.length;
       for (var i = 0; i < passwordLength; i++) {
         passwordGenerated = passwordGenerated + combinedArray[Math.floor(Math.random() * combinedArray.length)];
       }
+
+    
       return passwordGenerated;
+    }
+
+    else {
+      alert("Please enter a valid number! Please try again!");
+     return;
     }
   
 
@@ -87,10 +99,13 @@ function writePassword() {
 
 
   var password = generatePassword();
+  if (!password) {
+    password = "";
+  }
+
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
