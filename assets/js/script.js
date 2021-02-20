@@ -11,6 +11,8 @@ var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
                  'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
+var passwordGenerated = "";
+
 // Assignment code here
 
 
@@ -21,7 +23,7 @@ var generateBtn = document.querySelector("#generate");
 
 var generatePassword = function() {
 
-    var passwordGenerated = ""
+    
 
     // Ask users about the length of password
     var numCharacters = parseInt(window.prompt("How many characters would you like your password to contain?"));
@@ -74,7 +76,8 @@ var generatePassword = function() {
 
       if (!okSpecial && !okNumeric && !okLowerCase && !okUpperCase) {
         alert("At least one of the criteria should be selected. Please try again!");
-        return;
+       writePassword();
+       return;
       }
 
       var passwordLength = numCharacters - passwordGenerated.length;
@@ -82,29 +85,29 @@ var generatePassword = function() {
         passwordGenerated = passwordGenerated + combinedArray[Math.floor(Math.random() * combinedArray.length)];
       }
 
-    
-      return passwordGenerated;
+    return passwordGenerated; 
     }
 
     else {
       alert("Please enter a valid number! Please try again!");
-     return;
+      writePassword();
+      return;
     }
-  
 
 };
 
 // Write password to the #password input
 function writePassword() {
+passwordGenerated = "";
 
-
-  var password = generatePassword();
+generatePassword();
+  var password = passwordGenerated;
   if (!password) {
-    password = "";
+    return;
   }
 
   var passwordText = document.querySelector("#password");
-
+  
   passwordText.value = password;
 }
 
