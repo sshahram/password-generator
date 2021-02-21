@@ -101,14 +101,14 @@ function writePassword() {
 passwordGenerated = "";
 
 generatePassword();
-  var password = passwordGenerated;
+  // var password = passwordGenerated;
   if (!password) {
     return;
   }
 
   var passwordText = document.querySelector("#password");
   
-  passwordText.value = password;
+  passwordText.value = passwordGenerated;
 }
 
 // Add event listener to generate button
