@@ -4,24 +4,18 @@
   box-sizing: border-box;
 }
 
-html,
-body,
+/* Remove redundant body and html property tags */
+/* Integrate all .wrapper properties */
 .wrapper {
   height: 100%;
   margin: 0;
-  padding: 0;
-}
-
-body {
   font-family: sans-serif;
   background-color: #f9fbfd;
-}
-
-.wrapper {
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
 }
+
 
 header {
   text-align: center;
@@ -93,9 +87,10 @@ button[disabled] {
   background: #c0c7cf;
 }
 
-.float-right {
+/* Comment out this as we do not have this class in our html file */
+/* .float-right {
   float: right;
-}
+} */
 
 #password {
   -webkit-appearance: none;
