@@ -1,6 +1,6 @@
 # Password Generator
 
-The main purpose of this project is to create a "password generator tool" that can generate password randomely based on users' criteria.
+The main purpose of this project is to create a "password generator tool" that can generate passwords randomly based on users' criteria.
 
 ## Task List
 
